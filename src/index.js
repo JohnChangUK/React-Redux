@@ -6,6 +6,7 @@ import SearchBar from './components/searchbar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
+//Google API key for YouTube videos
 const API_KEY = 'AIzaSyCyN6AqQ7ZtzJ6_Si5hSeQBlmfHeUVIDtA';
 
 // Create a new component. This component should produce some HTML.
