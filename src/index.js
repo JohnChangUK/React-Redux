@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -5,7 +6,7 @@ import SearchBar from './components/searchbar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AIzaSyCks9RoaWqvMLm8umozkwFBT51T50q4k6g';
+const API_KEY = 'AIzaSyCyN6AqQ7ZtzJ6_Si5hSeQBlmfHeUVIDtA';
 
 // Create a new component. This component should produce some HTML.
 
@@ -18,22 +19,28 @@ class App extends Component {
       selectedVideo: null
        };
 
-    YTSearch({key: API_KEY, term: 'surfBoards'}, (videos) => {
-      this.setState({ 
-        videos: videos,
-        selectedVideo: videos[0]
-      });
-    });
+    this.videoSearch('surfboards');
   }
 
+  videoSearch(term) {
+    YTSearch({key: API_KEY, term: term}, (videos) => {
+    this.setState({ 
+      videos: videos,
+      selectedVideo: videos[0]
+    });
+  });
+}
+
   render() {
+    const videoSearch = _.debounce((term) => { this.videoSearch(term)}, 300);
+
     return (
       <div>
-        <SearchBar />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-          videos={this.state.videos} />
+        <SearchBar onSearchTermChange={videoSearch} />
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList
+            onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+            videos={this.state.videos} />
       </div>
     );
   }
