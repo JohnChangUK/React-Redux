@@ -1,6 +1,7 @@
 .search-bar {
   margin: 20px;
   text-align: center;
+  color: red;
 }
 
 .search-bar input {
@@ -9,6 +10,7 @@
 
 .video-item img {
   max-width: 64px;
+  color: grey;
 }
 
 .video-detail .details {
@@ -24,4 +26,8 @@
 
 .list-group-item:hover {
   background-color: #eee;
+}
+
+.container {
+  background-color: skyblue;
 }
