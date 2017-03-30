@@ -5,7 +5,7 @@
 }
 
 .search-bar input {
-  width: 75%;
+  width: 80%;
 }
 
 .video-item img {
@@ -30,4 +30,7 @@
 
 .container {
   background-color: skyblue;
+  padding: 200px;
+  display: inline-block;
+  width: 100%;
 }
